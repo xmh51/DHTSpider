@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd
+        http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <context:annotation-config/>
+    <import resource="DHTSpider-context-test.xml"/>
+    <context:component-scan base-package="me.hncn.dhtspider.producer"/>
+    <bean id="group"  class="io.netty.channel.nio.NioEventLoopGroup"/>
+    <bean id="dhtClientList" init-method="init" class="me.hncn.dhtspider.producer.dht.DHTClientList">
+        <property name="portStart" value="17786"/>
+        <property name="size" value="1"/>
+        <property name="table" ref="table"/>
+    </bean>
+
+</beans>
