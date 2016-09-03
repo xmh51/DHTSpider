@@ -61,7 +61,7 @@
             <artifactId>spring-data-mongodb</artifactId>
             <version>${spring.data.mongodb.version}</version>
         </dependency>
-     
+
         <dependency>
             <groupId>net.jcip</groupId>
             <artifactId>jcip-annotations</artifactId>

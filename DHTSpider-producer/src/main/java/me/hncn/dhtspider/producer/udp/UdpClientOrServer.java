@@ -10,6 +10,7 @@ import me.hncn.dhtspider.model.mongo.node.Node;
 import me.hncn.dhtspider.spring.SpringContextHolder;
 import me.hncn.dhtspider.util.ShaUtil;
 import me.hncn.util.net.ScanGetPort;
+import net.jcip.annotations.NotThreadSafe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import io.netty.buffer.ByteBuf;
@@ -23,6 +24,7 @@ import java.net.InetSocketAddress;
  * 注意 此此类为多线程，请务必注意线程安全！ 继承 抽象类 请 务必 注意 线程安全！
  * Created by XMH on 2016/6/13.
  */
+@NotThreadSafe
 public abstract class UdpClientOrServer extends SimpleChannelInboundHandler<DatagramPacket> {
     private Logger logger = LoggerFactory.getLogger(UdpClientOrServer.class);
     private Channel channel;
@@ -98,7 +100,7 @@ public abstract class UdpClientOrServer extends SimpleChannelInboundHandler<Data
 
 
     /**
-     * 注意 此方法为多线程，请务必注意线程安全！
+     *
      *
      * @param address 远程 udp 地址
      * @param receive 收到的数据
